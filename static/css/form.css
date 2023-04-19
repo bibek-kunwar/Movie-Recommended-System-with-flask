@@ -1,0 +1,144 @@
+/* Global Styling Starts */
+:root {
+    --main-color: #0BDA51;
+    --body-bg: #181616;
+    --box-bg: #221f1f;
+    --text-color: #ffffff;
+    --size: 30px;
+    --nav-height: 60px;
+    --space-top: 30px;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: "Cairo", sans-serif;
+    background-color: var(--body-bg);
+    color: var(--text-color);
+    padding-top: var(--nav-height);
+}
+
+.form-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.btn-form {
+    color: #ffffff;
+    padding: 0.25rem 1.5rem;
+    text-transform: uppercase;
+    font-size: 1.25rem;
+    font-weight: 700;
+    align-items: center;
+}
+
+.btn-text {
+    color: black;
+    padding: 0.25rem 1.5rem;
+    text-transform: uppercase;
+    font-size: 1.25rem;
+    font-weight: 700;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.btn-form:hover {
+    color: #000000;
+    background-color: var(--main-color);
+    transition: 0.3s ease-in-out;
+}
+
+.container {
+    max-width: 1920px;
+    padding: 0 40px;
+    margin: auto;
+}
+
+.formLoginContainer {
+    max-width: 500px;
+
+    padding: 30px 50px;
+    margin: auto;
+   margin-top: 30px;
+}
+.formRegisterContainer {
+    max-width: 500px;
+    height: 82vh;
+    padding: 0 50px;
+    margin: auto;
+    margin-top: 30px;
+}
+
+.form__input,
+.form__button {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.form--hidden {
+    display: none;
+}
+
+.form>*:first-child {
+    margin-top: 0;
+}
+
+.form>*:last-child {
+    margin-bottom: 0;
+}
+
+.form__title {
+    color: lightseagreen;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.form__input-group {
+    margin-bottom: 16px;
+}
+
+.form__input {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+    border-radius: var(--border-radius);
+    border: 1px solid #dddddd;
+    outline: none;
+    background: #eeeeee;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.form__input:focus {
+    border-color: lightgreen;
+    background: #ffffff;
+}
+
+.form__text {
+    color: white;
+    text-align: center;
+}
+
+#close-btn {
+    cursor: pointer;
+    color: white;
+}
+
+.form__link {
+    color: var(--color-secondary);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.form__link:hover {
+    text-decoration: underline;
+}

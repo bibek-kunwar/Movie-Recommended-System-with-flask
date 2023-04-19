@@ -1,0 +1,59 @@
+{% extends 'main.html' %}
+{% block title %}
+<title>Home Page</title>
+{% endblock title %}
+
+{% block body %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+<ul class=flashes>
+  {% for category, message in messages %}
+  <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+    <strong>Message:</strong> {{message}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
+<div class="formContactContainer">
+
+        <form class="form" id="login" method="POST" >
+            <h1 class="form__title">Contact Us</h1>
+            <p style="text-align: center;">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+            <div class="wrap">
+                <div class="form__input-group">
+                    <input type="text" class="form__input" autofocus placeholder="Username "  name="name">
+                </div>
+               <div class="form__input-group">
+                    <input type="email" class="form__input" autofocus placeholder="Email" name="email">
+                </div>
+            </div>
+            <div class="form__input-group">
+                <textarea id="message" cols="62" rows="6" autofocus placeholder="Message" name="message"></textarea>
+            </div>
+
+            <button class="btn btn-text" type="submit">Submit</button>
+
+
+        </form>
+    </div>
+    <!-- Form Section Ends -->
+
+<!--
+    <form method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br>
+        <label for="message">Message:</label>
+        <textarea id="message" name="message"></textarea><br>
+        <input type="submit" value="Submit">
+    </form>
+   -->
+
+    {% endblock body %}
+

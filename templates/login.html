@@ -1,0 +1,40 @@
+{% extends 'register.html' %}
+{% block title %}
+<title>Login Page</title>
+{% endblock title %}
+
+{% block body %}
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+<ul class=flashes>
+  {% for category, message in messages %}
+  <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+    <strong>Message:</strong> {{message}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
+
+<form method="POST" class="form" action="/login" >
+  <h1 class="formLoginContainer">Login page</h1>
+  <div class="form__input-group">
+    <label for="exampleInputEmail1">User Name</label>
+    <input type="text" class="form__input" id="exampleInputEmail1" aria-describedby="emailHelp" name="username">
+  </div>
+  <div class="form__input-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form__input" id="exampleInputPassword1" name="password">
+  </div>
+  <div class="form-button">
+    <button type="submit" class="btn-form btn-text" my-3>Login</button>
+  </div>
+</form>
+
+
+{% endblock body %}

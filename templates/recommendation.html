@@ -1,0 +1,59 @@
+{% extends 'main.html' %}
+{% block title %}
+<title>Recommedation</title>
+{% endblock title %}
+
+{% block body %}
+
+<div class="search-container">
+        <div class="wrap">
+
+
+            <h1>Search Movie</h1>
+            <div class="search">
+
+                <input type="text" class="searchTerm" placeholder="What are you looking for?" id="movies" name="movies">
+                    
+                 <button type="submit" class="searchButton">
+                    <i class="bx bx-search"></i>
+                </button>
+
+            </div>
+        </div>
+</div>
+
+
+{% if status==True %}
+ <div class=" container info-section">
+     {% for i in range(10) %}
+        <div class="info-Image">
+            <img src="{{poster[i]}}" alt="">
+        </div>
+        <div class="info-text">
+            <h2 class="main-color"> {{movies_name[i]}}</h2>
+            <h3>Genre :<span> {{genre[i]}}</span> </h3>
+            <h3>Release Date :<span> {{release_date[i]}}</span> </h3>
+            <h3>Cast :<span> {{cast[i]}}</span> </h3>
+            <h3>Crew :<span> {{crew[i]}}</span> </h3>
+            <h3>Overview :<span> {{overview[i]}}</span> </h3>
+            <p>
+                Bloodshot is a 2020 American superhero film based on the Valiant Comics character of the same name. It
+                is intended to be the first installment in a series of films set within a Valiant Comics shared
+                cinematic universe.[3] Directed by David S. F. Wilson (in his feature directorial debut) from a
+                screenplay by Jeff Wadlow and Eric Heisserer and a story by Wadlow,[4] the film stars Vin Diesel in the
+                main role, Eiza González, Sam Heughan, Toby Kebbell, and Guy Pearce.
+            </p>
+            <p>
+                Bloodshot is a 2020 American superhero film based on the Valiant Comics character of the same name. It
+                is intended to be the first installment in a series of films set within a Valiant Comics shared
+                cinematic universe.[3]
+            </p>
+        </div>
+    </div>
+      {% endfor %}
+    {% endif %}
+
+
+
+
+{% endblock body %}

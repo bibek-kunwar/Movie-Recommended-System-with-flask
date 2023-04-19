@@ -1,0 +1,40 @@
+{% extends 'main.html' %}
+{% block title %}
+<title>Movie Upload</title>
+{% endblock title %}
+
+{% block body %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+<ul class=flashes>
+  {% for category, message in messages %}
+  <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+    <strong>Message:</strong> {{message}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
+<h1>Upload a Movie</h1>
+	 <form method="POST" action="{{ url_for('create_post') }}" enctype="multipart/form-data">
+    <label for="title">Title:</label><br>
+    <input type="text" name="title" required><br>
+
+    <label for="rating">Rating:</label><br>
+    <input type="number" name="rating" step="0.1" min="0" max="10" required><br>
+
+    <label for="time">Time:</label><br>
+    <input type="text" name="time" required><br>
+
+
+    <label for="image">Image:</label><br>
+    <input type="file" name="image" accept="image/*" required><br>
+
+    <input type="submit" value="Submit">
+  </form>
+
+{% endblock body %}
