@@ -29,6 +29,8 @@
     -->
      <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/grid.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}">
+
 
 
 
@@ -55,8 +57,10 @@
                     <li><a href=""> {{current_user.username}} </a></li>
                     <li><a href="/">Home</a></li>
                     <li><a href="/recommendation">Recommendation</a></li>
+                    {% if current_user.is_admin %}
                     <li><a href="/create_post">POST movie</a></li>
-                    <li><a href="/contact">Contact</a></li>
+                    {% endif %}
+                    <li><a href="/contact">About</a></li>
                     <li> <a href="/logout">Logout</a></li>
 
                      {% else %}
@@ -89,9 +93,9 @@
                             <i class='bx bx-movie-play bx-tada main-color'></i>Dark<span class="main-color"> Shadow</span>
                         </a>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut veniam ex quos hic id nobis
-                            beatae earum sapiente! Quod ipsa exercitationem officiis non error illum minima iusto et.
-                            Dolores, quibusdam?
+                           This is a movie Recommendation system that based on content-based filtering.
+                            In this System, the user can search the similarity movie and
+                            view the movie details
                         </p>
                         <div class="social-list">
                             <a href="#" class="social-item">

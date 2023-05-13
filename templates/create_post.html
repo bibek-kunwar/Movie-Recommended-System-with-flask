@@ -19,22 +19,51 @@
 {% endif %}
 {% endwith %}
 
-<h1>Upload a Movie</h1>
+<div class="formContactContainer">
+
+<h1  class="form__title">Upload a Movie</h1>
 	 <form method="POST" action="{{ url_for('create_post') }}" enctype="multipart/form-data">
-    <label for="title">Title:</label><br>
-    <input type="text" name="title" required><br>
 
-    <label for="rating">Rating:</label><br>
-    <input type="number" name="rating" step="0.1" min="0" max="10" required><br>
+    <div class="wrap">
+    <div class="form__input-group"  style="margin-left: 25%; margin-right:25%">
+    <input type="text" class="form__input" name="title" placeholder="Title" style="" autofocus required ><br>
+    </div>
 
-    <label for="time">Time:</label><br>
-    <input type="text" name="time" required><br>
+    <div class="form__input-group"  style="margin-left: 25%; margin-right:25%">
+    <input type="number" class="form__input" name="rating"placeholder="Rating" placeholder="Rating"  step="0.1" min="0" max="10" required><br>
+    </div>
 
 
-    <label for="image">Image:</label><br>
-    <input type="file" name="image" accept="image/*" required><br>
+    <div class="form__input-group"  style="margin-left: 25%; margin-right:25%">
+    <input type="text" name="time" placeholder="Time" class="form__input" required><br>
+    </div>
 
-    <input type="submit" value="Submit">
+
+
+    <div class="form__input-group"  style="margin-left: 25%; margin-right:25%">
+    <input type="text" name="movie_type" placeholder="Movie Type" class="form__input" required><br>
+    </div>
+    </div>
+
+
+
+    <label for="image" style="margin-left:45%">Image:</label><br>
+    <input type="file" style="margin-left:45%" name="image" accept="image/*" required><br> <br>
+
+    <input class="btn btn-text"  style="margin-left: 45%; margin-right:25%"  type="submit" value="Submit">
   </form>
+
+</div>
+
+<form action="{{ url_for('delete_post') }}" method="post">
+  <label for="movie_name">Movie Name:</label>
+  <div class="form__input-group"  style="margin-left: 25%; margin-right:25%">
+    <input type="text" name="movie_name" placeholder="movie_name" class="form__input" required><br>
+    </div>
+    </div>
+
+  <button class="btn btn-text"  style="margin-left: 45%; margin-right:25%"  type="submit">Delete Post</button>
+</form>
+
 
 {% endblock body %}

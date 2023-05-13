@@ -1,10 +1,8 @@
 from flask import Flask, render_template, request, redirect, flash, url_for, session
 import os
 from flask import jsonify
-from flask_login import LoginManager, current_user, login_user, UserMixin, logout_user, login_required
+from flask_login import LoginManager, current_user, login_user, UserMixin, logout_user
 from flask_sqlalchemy import SQLAlchemy
-from flask_session import Session
-
 from datetime import datetime
 from fuzzywuzzy import process
 import pickle
@@ -103,8 +101,6 @@ db.init_app(app)
 
 # sstep 4
 login_manager = LoginManager()
-login_manager.login_view = 'login'
-
 login_manager.init_app(app)
 
 
@@ -113,11 +109,11 @@ login_manager.init_app(app)
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.VARCHAR(80), nullable=False)
-    email = db.Column(db.VARCHAR(80), nullable=False)
-    firstname = db.Column(db.VARCHAR(80), nullable=False)
-    lastname = db.Column(db.VARCHAR(80), nullable=False)
-    password = db.Column(db.VARCHAR(80), nullable=False)
+    username = db.Column(db.String(80), nullable=False)
+    email = db.Column(db.String(80), nullable=False)
+    firstname = db.Column(db.String(80), nullable=False)
+    lastname = db.Column(db.String(80), nullable=False)
+    password = db.Column(db.String(80), nullable=False)
     is_admin = db.Column(db.Boolean, default=False)
 
     def __repr__(self):
@@ -126,18 +122,18 @@ class User(UserMixin, db.Model):
 
 class Contact(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.VARCHAR(50), nullable=False)
-    email = db.Column(db.VARCHAR(50), nullable=False)
+    name = db.Column(db.String(50), nullable=False)
+    email = db.Column(db.String(50), nullable=False)
     message = db.Column(db.Text, nullable=False)
 
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.VARCHAR(100), nullable=False)
+    title = db.Column(db.String(100), nullable=False)
     rating = db.Column(db.Float, nullable=False)
-    time = db.Column(db.VARCHAR(20), nullable=False)
-    image_url = db.Column(db.VARCHAR(200), nullable=False)
-    movie_type = db.Column(db.VARCHAR(50), nullable=False)  # new column
+    time = db.Column(db.String(20), nullable=False)
+    image_url = db.Column(db.String(200), nullable=False)
+    movie_type = db.Column(db.String(50), nullable=False)  # new column
 
     def __repr__(self):
         return f"Post('{self.title}', '{self.rating}', '{self.time}', '{self.image_url}', '{self.movie_type}')"
@@ -163,7 +159,6 @@ def index():
 
 
 @app.route('/create_post', methods=['GET', 'POST'])
-@login_required
 def create_post():
     if request.method == 'POST':
         title = request.form['title']
@@ -183,24 +178,10 @@ def create_post():
     return render_template('create_post.html')
 
 
-# @app.route('/delete_post', methods=['POST'])
-# @login_required
-# def delete_post():
-#     movie_name = request.form['movie_name']
-#     post = Post.query.filter_by(title=movie_name).first()
-#     db.session.delete(post)
-#     db.session.commit()
-#     flash('The post has been deleted!', 'success')
-#     return redirect(url_for('index'))
-
 @app.route('/delete_post', methods=['POST'])
-@login_required
 def delete_post():
     movie_name = request.form['movie_name']
     post = Post.query.filter_by(title=movie_name).first()
-    if post is None:
-        flash("Movie not found in the database.")
-        return redirect(url_for('create_post'))
     db.session.delete(post)
     db.session.commit()
     flash('The post has been deleted!', 'success')
@@ -208,7 +189,6 @@ def delete_post():
 
 
 @app.route('/contact', methods=['GET', 'POST'])
-@login_required
 def contact():
     if request.method == 'POST':
         name = request.form['name']
@@ -236,7 +216,6 @@ def desc():
 
 
 @app.route('/recommendation', methods=['GET', 'POST'])
-@login_required
 def recommend():
     movie_list = movies['title'].values
     status = False
@@ -344,7 +323,6 @@ def login():
 
 
 @app.route('/logout')
-@login_required
 def logout():
     logout_user()
     return redirect('/')

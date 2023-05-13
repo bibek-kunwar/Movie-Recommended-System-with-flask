@@ -5,55 +5,80 @@
 
 {% block body %}
 
-<div class="search-container">
-        <div class="wrap">
+<div class="wrap">
+    <h1>Search Movie</h1>
+    <div class="search">
+        <form Method="POST" action="/recommendation">
 
-
-            <h1>Search Movie</h1>
-            <div class="search">
-
-                <input type="text" class="searchTerm" placeholder="What are you looking for?" id="movies" name="movies">
-                    
-                 <button type="submit" class="searchButton">
-                    <i class="bx bx-search"></i>
-                </button>
-
+            <div class="form__input-group">
+                <input type="text" class="form__input" placeholder="Select a Movie:" style="margin-left:250%"
+                    id="movies" name="movies" list="movie_list">
             </div>
-        </div>
+            <datalist id="movie_list">
+                {% for j in movie_list %}
+                <option {{j}}">{{j}}</option>
+                {% endfor %}
+            </datalist>
+            <button class="btn btn-text" style="margin-left: 265%;text-align: center" type="submit">Submit</button>
+        </form>
+    </div>
 </div>
+<br>
 
 
-{% if status==True %}
- <div class=" container info-section">
-     {% for i in range(10) %}
+{% if status is defined and status == True %}
+<h1>Your Serch Movies is:</h1>
+<div class=" container info-section">
+
         <div class="info-Image">
+            <img src="{{poster[0]}}" alt="">
+        </div>
+        <div class="info-text">
+              <h2 class="main-color"> {{movies_name[0]}}</h2>
+            <h3>Genre :<span> {{genre[0]}}</span> </h3>
+            <h3>Release Date :<span> {{release_date[0]}}</span> </h3>
+            <h3>Cast :<span> {{cast[0]}}</span> </h3>
+            <h3>Crew :<span> {{crew[0]}}</span> </h3>
+            <h3>Overview : </h3>
+            <p>
+                <span> {{overview[0]}}</span>
+            </p>
+
+        </div>
+	</div>
+ <div> <h1> The similar Movies are:</h1></div>
+
+{% if movies_name %}
+<div class=" container info-section">
+  {% for i in range(1, 11) %}
+  <div class="info-Image">
             <img src="{{poster[i]}}" alt="">
         </div>
         <div class="info-text">
-            <h2 class="main-color"> {{movies_name[i]}}</h2>
+              <h2 class="main-color"> {{movies_name[i]}}</h2>
             <h3>Genre :<span> {{genre[i]}}</span> </h3>
             <h3>Release Date :<span> {{release_date[i]}}</span> </h3>
             <h3>Cast :<span> {{cast[i]}}</span> </h3>
             <h3>Crew :<span> {{crew[i]}}</span> </h3>
-            <h3>Overview :<span> {{overview[i]}}</span> </h3>
+            <h3>Overview : </h3>
             <p>
-                Bloodshot is a 2020 American superhero film based on the Valiant Comics character of the same name. It
-                is intended to be the first installment in a series of films set within a Valiant Comics shared
-                cinematic universe.[3] Directed by David S. F. Wilson (in his feature directorial debut) from a
-                screenplay by Jeff Wadlow and Eric Heisserer and a story by Wadlow,[4] the film stars Vin Diesel in the
-                main role, Eiza González, Sam Heughan, Toby Kebbell, and Guy Pearce.
+                <span> {{overview[i]}}</span>
             </p>
-            <p>
-                Bloodshot is a 2020 American superhero film based on the Valiant Comics character of the same name. It
-                is intended to be the first installment in a series of films set within a Valiant Comics shared
-                cinematic universe.[3]
-            </p>
+
         </div>
-    </div>
-      {% endfor %}
-    {% endif %}
+  {% endfor %}
+</div>
+{% else %}
 
 
+{% endif %}
+
+{% else %}
+
+<h1 style="text-align:center;">{{message}}</h2>
+
+
+{% endif %}
 
 
 {% endblock body %}

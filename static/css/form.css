@@ -65,10 +65,10 @@ body {
 
 .formLoginContainer {
     max-width: 500px;
-
     padding: 30px 50px;
     margin: auto;
    margin-top: 30px;
+   text-align: center;
 }
 .formRegisterContainer {
     max-width: 500px;
@@ -76,12 +76,15 @@ body {
     padding: 0 50px;
     margin: auto;
     margin-top: 30px;
+
 }
 
 .form__input,
 .form__button {
     font-size: 16px;
     font-weight: 500;
+    align-items: center;
+    text-align: center;
 }
 
 .form--hidden {
@@ -104,11 +107,17 @@ body {
 
 .form__input-group {
     margin-bottom: 16px;
+    text-align: center;
+
 }
 
+
 .form__input {
+
     display: block;
     width: 100%;
+    text-align: center;
+
     padding: 12px;
     box-sizing: border-box;
     border-radius: var(--border-radius);

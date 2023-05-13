@@ -1,7 +1,13 @@
 {% extends 'main.html' %}
+<head>
+
 {% block title %}
 <title>Home Page</title>
+</head>
+
+
 {% endblock title %}
+
 
 {% block body %}
 {% with messages = get_flashed_messages(with_categories=true) %}
@@ -9,7 +15,7 @@
 <ul class=flashes>
   {% for category, message in messages %}
   <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
-    <strong>Message:</strong> {{message}}
+     <h1 style="text-align: center"><strong>Message:</strong> {{message}}</h1>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -19,28 +25,44 @@
 {% endif %}
 {% endwith %}
 
+<div class="container">
+      <h1 style="text-align:center;" >Welcome to Movie Recommendation System</h1>
+      <p style="text-align:center;">This is a movie Recommendation system that based on content-based filtering.<br> In this System, the user can search the similarity movie and <br> view the movie details</p> <br>
+      <div class="waran-image" >
+      <div class="waran-image" style="display: flex; justify-content: center; align-items: center;">
+  <img src="{{url_for('static', filename='images/supergirl-banner.jpg')}}" alt="banner images" style="height: 45%; width: 45%; object-fit: cover;">
+</div>
+
+      </div>
+</div>
+
 <div class="formContactContainer">
 
         <form class="form" id="login" method="POST" >
-            <h1 class="form__title">Contact Us</h1>
-            <p style="text-align: center;">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+            <h1 class="form__title">Feedback Form</h1>
+            <p style="text-align: center;">If you have any quries Please fill this form </p>
+            <br>
             <div class="wrap">
-                <div class="form__input-group">
-                    <input type="text" class="form__input" autofocus placeholder="Username "  name="name">
+                <div class="form__input-group"  style="margin-left: 25%; margin-right:25%">
+                    <input type="text" class="form__input"   autofocus placeholder="Name "  name="name" required>
                 </div>
-               <div class="form__input-group">
-                    <input type="email" class="form__input" autofocus placeholder="Email" name="email">
+               <div class="form__input-group"  style="margin-left: 25%; margin-right:25%">
+                    <input type="email" class="form__input" autofocus placeholder="Email" name="email" required>
                 </div>
             </div>
             <div class="form__input-group">
-                <textarea id="message" cols="62" rows="6" autofocus placeholder="Message" name="message"></textarea>
+                <textarea id="message" cols="62" rows="6" autofocus placeholder="Message" name="message" required></textarea>
             </div>
 
-            <button class="btn btn-text" type="submit">Submit</button>
+            <button class="btn btn-text"  style="margin-left: 45%; margin-right:25%" type="submit">Submit</button>
 
 
         </form>
     </div>
+
+
+
+    <br> <br> <br>
     <!-- Form Section Ends -->
 
 <!--

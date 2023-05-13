@@ -15,33 +15,46 @@
 </head>
 
 <body>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+<ul class=flashes>
+  {% for category, message in messages %}
+
+   <h3 style="text-align: center;">  {{message}}</h3>
+
+
+  </div>
+  {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
 
 <div class=" formRegisterContainer">
     {% block body %}
-
 
     <h2 class="form__title">Movie Recommedation System </h2>
 
     <form class="form" method="POST" action="{{url_for('register')}}">
         <div class="form__input-group">
-          <label for="inputAddress" class="form-label">First Name</label>
-          <input type="text" class="form__input" id="inputAddress" placeholder="first name" name="fname">
+          <label for="inputAddress" class="form-label" >First Name</label>
+          <input type="text" class="form__input" id="inputAddress" placeholder="first name" name="fname" value="{{ session.fname }}" required >
         </div>
         <div class="form__input-group">
           <label for="inputAddress2" class="form-label">Last Name</label>
-          <input type="text" class="form__input" id="inputAddress2" placeholder="Last Name" name="lname">
+          <input type="text" class="form__input" id="inputAddress2" placeholder="Last Name" name="lname" value="{{ session.fname }}" required >
         </div>
         <div class="form__input-group">
           <label for="inputAddress2" class="form-label">Username</label>
-          <input type="text" class="form__input" id="inputAddress2" placeholder="Last Name" name="username">
+          <input type="text" class="form__input" id="inputAddress2" placeholder="Last Name" name="username"  value="{{ session.username }}" required>
         </div>
         <div class="form__input-group">
-          <label for="inputEmail4" class="form-label">Email</label>
-          <input type="email" class="form__input" id="inputEmail4" placeholder="Email" name="email">
+          <label for="inputEmail4" class="form-label" >Email</label>
+          <input type="email" class="form__input" id="inputEmail4" placeholder="Email" name="email" value="{{ session.email }}" required>
         </div>
         <div class="form__input-group">
           <label for="inputPassword4" class="form-label">Password</label>
-          <input type="password" class="form__input" id="inputPassword4" placeholder="password" name="password">
+          <input type="password" class="form__input" id="inputPassword4" placeholder="password" name="password" required>
         </div>
         <div class="form-button">
           <button type="submit" class="btn-form btn-text" my-3>Sign in</button>

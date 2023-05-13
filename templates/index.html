@@ -27,13 +27,12 @@
                                 Hollywood Movie
                             </div>
                             <div class="item-content-description top-down ay-4">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, possimus eius. Deserunt
-                                non odit, cum vero reprehenderit laudantium odio vitae autem quam,
+                               Our machine learning algorithm has identified these movies as the best match for your individual taste and preferences.
                             </div>
                             <div class="item-action top-down ay-6">
                                 <a href="recommend.html" class="btn btn-hover">
                                     <i class="bx bxs-right-arrow"></i>
-                                    <span>Watch now</span>
+                                    <span>Recommendation</span>
                                 </a>
                             </div>
                         </div>
@@ -60,7 +59,7 @@
                 {% for post in posts  %}
 
 
-                <a href="#" class="movie-item" name="mimage">
+                <a href="desc" class="movie-item" name="mimage">
                     <img src="{{ post.image_url }}" alt="{{ post.title }}">
                     <div class="movie-item-content">
                         <div class="movie-item-title" name="mname">
@@ -74,6 +73,9 @@
                             <div class="movie-info">
                                 <i class="bx bxs-time"></i>
                                 <span>{{ post.time }}</span>
+                            </div>
+                             <div class="movie-info">
+                                <span>{{post.movie_type}}</span>
                             </div>
 
                         </div>
